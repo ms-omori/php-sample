@@ -16,15 +16,23 @@ class TodoController
         $this->listTodosUseCase = $listTodosUseCase;
     }
 
-    public function create(string $title): void
+    public function create(string $title, string $userId): void
     {
-        $todo = $this->createTodoUseCase->execute($title);
+        $todo = $this->createTodoUseCase->execute($title, $userId);
         echo "TODO created: " . $todo->getTitle();
     }
 
     public function list(): void
     {
-        $todos = $this->listTodosUseCase->execute();
+        $todos = $this->listTodosUseCase->listTodos();
+        foreach ($todos as $todo) {
+            echo $todo->getTitle() . "\n";
+        }
+    }
+
+    public function listWithUserId(): void
+    {
+        $todos = $this->listTodosUseCase->listTodos();
         foreach ($todos as $todo) {
             echo $todo->getTitle() . "\n";
         }

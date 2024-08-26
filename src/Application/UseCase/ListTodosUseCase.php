@@ -13,7 +13,12 @@ class ListTodosUseCase
         $this->todoRepository = $todoRepository;
     }
 
-    public function execute(): array
+    public function listTodos(): array
+    {
+        return $this->todoRepository->findAll();
+    }
+
+    public function listWithUserId(): array
     {
         return $this->todoRepository->findAll();
     }
