@@ -1,12 +1,12 @@
 <?php
 
-use App\Infrastructure\Persistence\InMemoryTodoRepository;
+use App\Infrastructure\Persistence\TodoRepository;
 use App\Application\UseCase\CreateTodoUseCase;
 use App\Application\UseCase\ListTodosUseCase;
 use App\Infrastructure\Persistence\Database;
 use App\Presentation\Controller\TodoController;
 
-$todoRepository = new InMemoryTodoRepository(new Database());
+$todoRepository = new TodoRepository(new Database());
 
 $createTodoUseCase = new CreateTodoUseCase($todoRepository);
 $listTodosUseCase = new ListTodosUseCase($todoRepository);

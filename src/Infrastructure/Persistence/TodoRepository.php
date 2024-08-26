@@ -5,9 +5,8 @@ namespace App\Infrastructure\Persistence;
 use App\Domain\Model\Todo;
 use App\Domain\Repository\TodoRepositoryInterface;
 
-class InMemoryTodoRepository implements TodoRepositoryInterface
+class TodoRepository implements TodoRepositoryInterface
 {
-    private array $todos = [];
 
     private Database $database;
 
@@ -16,7 +15,7 @@ class InMemoryTodoRepository implements TodoRepositoryInterface
         $this->database = $database;
     }
 
-    public function save(Todo $todo): void
+    public function create(Todo $todo): void
     {
         $sql = "INSERT INTO todos (id, user_id, title) VALUES (:id, :title, :user_id)";
         $pdo = $this->database->getConnection();

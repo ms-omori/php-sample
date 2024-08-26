@@ -17,7 +17,7 @@ class CreateTodoUseCase
     public function execute(string $title, string $userId): Todo
     {
         $todo = new Todo(uniqid(), $userId, $title);
-        $this->todoRepository->save($todo);
+        $this->todoRepository->create($todo);
         return $todo;
     }
 }
